@@ -151,3 +151,11 @@ cython_debug/
 # Downloaded example models
 examples/models/*
 !examples/models/README.md
+
+# Pixi env
+.pixi/
+pixi.lock
+
+# Magic env
+.magic/
+magic.lock

@@ -5,10 +5,7 @@ Engine Python API.
 
 ## Quickstart
 
-First, install MAX as per the [MAX Engine get started
-guide](https://docs.modular.com/engine/get-started/).
-
-For this example, you also need a HuggingFace account and user access token
+For this example, you need a HuggingFace account and user access token
 saved as the `HF_TOKEN` environment variable. To generate the access token
 with READ permissions, follow the [instructions
 here](https://huggingface.co/docs/hub/en/security-tokens). Copy the access
@@ -18,6 +15,43 @@ or use it temporarily when you run the `run.sh` script, as shown below.
 Once you have your token properly set, you'll need to accept Mistral's terms and
 conditions on their HuggingFace page. Please visit [this link](https://huggingface.co/mistralai/Mistral-7B-v0.1)
 and accept the model's conditions.
+
+### Magic instructions
+
+If you are using Magic, you can run the following command:
+
+```sh
+# Run the MAX Engine example
+HF_TOKEN=<your-huggingface-user-token> magic run run.sh
+```
+
+### Pixi instructions
+
+If you are using Pixi, you can run the following command:
+
+```sh
+# Run the MAX Engine example
+HF_TOKEN=<your-huggingface-user-token> pixi run run.sh
+```
+
+### Conda instructions (advanced)
+
+Create a Conda environment, activate that environment, and install the
+requirements:
+
+```sh
+# Create a Conda environment if you don't have one
+conda create -n max-repo
+# Update the environment with the environment.yml file
+conda env update -n max-repo -f environment.yml --prune
+# Run the example
+HF_TOKEN=<your-huggingface-user-token> conda run -n max-repo --live-stream ./run.sh
+```
+
+### Modular CLI instructions (legacy)
+
+First, install MAX as per the [MAX Engine get started
+guide](https://docs.modular.com/engine/get-started/).
 
 Then you can install the package requirements and run this example:
 

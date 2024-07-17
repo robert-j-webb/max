@@ -1,0 +1,19 @@
+name: max-repo
+channels:
+  - pytorch
+  - https://conda.modular.com/max/
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.11,<3.12
+  - max>=24.4.0dev6
+  - pip>=24.0,<25
+  - numpy<2.0.0
+  - transformers
+  - diffusers=0.29.2
+  - ftfy>6.1
+  - onnx~=1.16.0
+  - onnxruntime~=1.17.3
+  - optimum~=1.19.1
+  - pytorch~=2.2.2
+  - transformers

@@ -12,7 +12,40 @@ either an ONNX model or a MAX Graph model.
 
 ## Add a custom op to an ONNX model
 
-1. If you don't already have an environment set up, create and activate a
+### Setup an environment
+
+#### Magic instructions
+
+If you are using Magic, you can run the following command:
+
+```sh
+magic shell
+```
+
+
+#### Conda instructions (advanced)
+
+Create a Conda environment, activate that environment, and install the
+requirements. Then activate the environment:
+
+```sh
+# Create a Conda environment if you don't have one
+conda create -n max-repo
+# Update the environment with the environment.yml file
+conda env update -n max-repo -f environment.yml --prune
+# Activate the environment
+conda activate max-repo
+```
+
+Later on, you can deactivate the environment with:
+
+```sh
+conda deactivate
+```
+
+#### Modular CLI instructions (legacy)
+
+ If you don't already have an environment set up, create and activate a
    virtual environment, then install the requirements:
 
    ```sh
@@ -22,13 +55,15 @@ either an ONNX model or a MAX Graph model.
    pip install --find-links $(modular config max.path)/wheels max-engine
    ```
 
-2. Run the `onnx-model.py` script to generate `onnx_det.onnx`
+### Run the example
+
+1. Run the `onnx-model.py` script to generate `onnx_det.onnx`
 
    ```sh
    python3 onnx-model.py
    ```
 
-3. The `onnx_det.onnx` model you get currently does not compile with MAX Engine
+2. The `onnx_det.onnx` model you get currently does not compile with MAX Engine
    because it includes the DET op that's currently not implemented in MAX.
    As proven if you try to benchmark it:
 
@@ -36,13 +71,13 @@ either an ONNX model or a MAX Graph model.
    max benchmark onnx_det.onnx
    ```
 
-4. Package the `det.mojo` custom op in `custom_ops` with this command:
+3. Package the `det.mojo` custom op in `custom_ops` with this command:
 
    ```sh
    mojo package custom_ops
    ```
 
-5. Now run the model with the custom op:
+4. Now run the model with the custom op:
 
    ```sh
    max benchmark onnx_det.onnx --custom-ops-path=custom_ops.mojopkg

@@ -6,6 +6,39 @@ predict the masked words in a sentence.
 
 ## Quickstart
 
+### Magic instructions
+
+If you are using Magic, you can run the following command:
+
+```sh
+magic run run.sh
+```
+
+### Pixi instructions
+
+If you are using Pixi, you can run the following command:
+
+```sh
+pixi run run.sh
+```
+
+### Conda instructions (advanced)
+
+Create a Conda environment, activate that environment, and install the
+requirements:
+
+```sh
+# Create a Conda environment if you don't have one
+conda create -n max-repo
+# Update the environment with the environment.yml file
+conda env update -n max-repo -f environment.yml --prune
+# Run the example
+conda run -n max-repo --live-stream bash run.sh
+```
+
+### Modular CLI instructions (legacy)
+
+
 1. Install MAX as per the [MAX install
     guide](https://docs.modular.com/max/install/).
 

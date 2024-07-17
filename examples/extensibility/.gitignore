@@ -1,0 +1,3 @@
+onnx_det.onnx
+custom_ops.mojopkg
+mlperf_log_*

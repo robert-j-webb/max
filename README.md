@@ -78,16 +78,6 @@ Check out the [notebooks examples](./examples/notebooks/) for using MAX Engine
 
 ### FAQ
 
-Q: I get `ModuleNotFoundError: No module named 'max'` when running an example?
-
-A: Please make sure you run
-
-```sh
-python3 -m pip install --find-links "$(modular config max.path)/wheels" max-engine
-```
-
-in your local python environment. Note that `max` can also be available in your `PATH`
-
 ### MAX Serving Docker Container
 
 For MAX Serving, you can pull our Docker Container from the the public ECR here:

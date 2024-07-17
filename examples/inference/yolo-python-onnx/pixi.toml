@@ -1,0 +1,22 @@
+[project]
+name = "YOLO Python Onnx"
+version = "1.0.0"
+description = "MAX Examples"
+authors = ["Modular <hello@modular.com>"]
+channels = ["pytorch", "conda-forge", "anaconda", "https://conda.modular.com/max/"]
+platforms = ["osx-arm64","linux-64","linux-aarch64"]
+
+[dependencies]
+python =">=3.11,<3.12"
+max = ">=24.4.0dev6"
+pip = ">=24.0,<25"
+pytorch = "~=2.2.2"
+torchvision = "==0.17.2"
+numpy = "<2.0.0"
+transformers = "*"
+diffusers = "0.29.2"
+ftfy = ">6.1"
+libjpeg-turbo = {version = "*", channel = "conda-forge"}
+ffmpeg = {version = "*", channel = "conda-forge"}
+opencv= ">=4.9.0.80"
+ultralytics = ">=8.2.58"

@@ -1,0 +1,13 @@
+name: max-repo
+channels:
+  - pytorch
+  - https://conda.modular.com/max/
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.11,<3.12
+  - max>=24.4.0dev6
+  - pip>=24.0,<25
+  - numpy<2.0.0
+  - transformers
+  - pytorch~=2.2.2

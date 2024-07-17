@@ -12,8 +12,41 @@ End-to-end pipelines that demonstrate the power of
 more. A common Mojo driver file for executing these pipelines is found in this
 directory and can be invoked in a manner similar to the following:
 
-```shell
+
+### Magic instructions
+
+If you are using Magic, you can run the following command:
+
+```sh
+magic run llama2 --prompt "what is the meaning of life"
+magic run llama3 --prompt "what is the meaning of life"
+magic run quantize-tinystories --prompt "what is the meaning of life"
+magic run replit --prompt "what is the meaning of life"
+magic run basic
+magic run mojo run_pipeline.🔥 [pipeline] [options]
+```
+
+### Pixi instructions
+
+If you are using Pixi, you can run the following command:
+
+```sh
+pixi run mojo run_pipeline.🔥 [pipeline] [options]
+```
+
+### Conda instructions (advanced)
+
+```sh
+# Create a Conda environment if you don't have one
+conda create -n max-repo
+# Update the environment with the environment.yml file
+conda env update -n max-repo -f environment.yml --prune
+# Run the example
+conda activate max-repo
+
 mojo run_pipeline.🔥 [pipeline] [options]
+
+conda deactivate
 ```
 
 Explore each specific pipeline and follow the detailed instructions provided

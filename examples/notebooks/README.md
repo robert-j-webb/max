@@ -48,28 +48,67 @@ see the complete [JupyterLab installation guide](https://jupyterlab.readthedocs.
 the [Mojo SDK](https://developer.modular.com/download). However, syntax
 highlighting for Mojo code is not currently enabled in JupyterLab (coming soon).
 
-1. Install JupyterLab:
+## Install JupyterLab
+
+### Magic instructions
+
+If you are using Magic, you can run the following command to install JupyterLab:
+
+```sh
+magic run jupyter lab
+```
+
+### Pixi instructions
+
+If you are using Pixi, you can run the following command to install JupyterLab:
+
+```sh
+pixi run jupyter lab
+```
+
+### Conda instructions (advanced)
+
+Create a Conda environment, activate that enviroment, and install JupyterLab.
+
+``` sh
+# Create a Conda environment if you don't have one
+conda create -n max-repo
+# Activate the environment
+conda env update -n max-repo -f environment.yml --prune
+# run JupyterLab
+conda run -n max-repo jupyter lab
+```
+
+### Modular CLI instructions (legacy)
+
+If you are using the Modular CLI, you can run the following commands to create a python
+virtual environment and install JupyterLab:
+
+1. Create a virtual environment:
+
+    ```sh
+    python3 -m venv .venv
+    source venv/bin/activate
+    ```
+
+2. Install JupyterLab:
 
     ```sh
     python3 -m pip install jupyterlab
     ```
 
-2. Make sure the user-level `bin` is in your `$PATH`:
+3. Make sure the user-level `bin` is in your `$PATH`:
 
     ```sh
     export PATH="$HOME/.local/bin:$PATH"
     ```
 
-3. Launch JupyterLab:
+## Open the .ipynb notebooks
 
-    ```sh
-    jupyter lab
-    ```
-
-4. When you open any of the `.ipynb` notebooks from this repository, JupyterLab
+When you open any of the `.ipynb` notebooks from this repository, JupyterLab
 should automatically select the Mojo kernel (which was installed with the Mojo SDK).
 
-   Now run some MAX code!
+Now run some MAX code!
 
 ## Notes and tips
 
