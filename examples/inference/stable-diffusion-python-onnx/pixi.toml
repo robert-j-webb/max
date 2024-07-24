@@ -4,7 +4,7 @@ version = "1.0.0"
 description = "MAX Examples"
 authors = ["Modular <hello@modular.com>"]
 channels = ["pytorch", "conda-forge", "anaconda", "https://conda.modular.com/max/"]
-platforms = ["osx-arm64","linux-64","linux-aarch64"]
+platforms = ["osx-arm64","linux-64"]
 
 [dependencies]
 python = ">=3.11,<3.12"
@@ -15,3 +15,5 @@ ftfy = ">6.1"
 onnx = "~=1.16.0"
 onnxruntime = "~=1.17.3"
 optimum = "~=1.19.1"
+pytorch = "==2.2.2"
+transformers = "~=4.40.1"
