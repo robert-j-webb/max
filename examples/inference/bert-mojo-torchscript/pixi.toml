@@ -4,7 +4,7 @@ version = "1.0.0"
 description = "MAX Examples"
 authors = ["Modular <hello@modular.com>"]
 channels = ["pytorch", "conda-forge", "anaconda", "https://conda.modular.com/max/"]
-platforms = ["osx-arm64","linux-64","linux-aarch64"]
+platforms = ["osx-arm64","linux-64"]
 
 [dependencies]
 python = ">=3.11,<3.12"
