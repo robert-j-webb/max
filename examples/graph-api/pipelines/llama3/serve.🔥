@@ -170,6 +170,7 @@ struct Llama3InferenceService[
         # iterations generate one token.
         # Avoid overrunning the cache by setting the trip count accordingly.
         var outputs = List[String]()
+        var tokenCount = 0
 
         for _ in range(prompt.size, max_tokens + 1):
             var results = self._compiled_model._execute(
@@ -185,18 +186,13 @@ struct Llama3InferenceService[
             var logits_tensor = logits.to_tensor[DType.float32, rank=2]()
             var token = Int64(sampler.sample(logits_tensor^).selected)
 
+            # HACK: Check after decoding the token.
+            var next_token = self._tokenizer.decode(Int64(token))
             tokens = Tensor[DType.int64, rank=2]((1, 1), cpu_device)
             tokens[0, 0] = token
 
-            # HACK: Check for end of text token.
-            if token == 128001:
-                break
-
-            # HACK: Check after decoding the token.
-            var next_token = self._tokenizer.decode(Int64(token))
-            if next_token == "<|eot_id|>":
-                break
-
+            tokenCount = tokenCount + 1
+            var should_end = token == 128001 or next_token == "<|eot_id|>";
             if not stream:
                 outputs.append(next_token)
             else:
@@ -210,6 +206,13 @@ struct Llama3InferenceService[
                 choices.append(choice)
                 chunk["choices"] = choices
                 chunk["object"] = "chat.completion.chunk"
+                if(should_end):
+                    var usage = Python.dict()
+                    usage["completion_tokens"] = tokenCount
+                    usage["prompt_tokens"] =  prompt.size
+                    usage["total_tokens"] =  prompt.size + tokenCount
+                    chunk["usage"] = usage
+                
 
                 var json_str = self._json_module.dumps(chunk).encode(
                     encoding="utf_8"
@@ -221,6 +224,9 @@ struct Llama3InferenceService[
                     handler.wfile.flush()
                 except BrokenPipeError:
                     break
+
+            if should_end:
+                break;
 
         # Write complete response if not streaming.
         if stream:
